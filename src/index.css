@@ -1,13 +1,257 @@
-body {
+/*Home page*/
+
+body, header, nav, main, footer {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#container{
+  font-family:'Times New Roman', Times, serif;
+}
+
+header{
+  background-color: #E1E5EE;
+  width: auto;
+  height: 100px;
+}
+
+#head{
+  float: left;
+  position: relative;
+  display: block;
+  width: 40%;
+  padding-left: 7%;
+  font-size: 22px;
+  top: 10px;
+}
+
+#head h1{
+  cursor: pointer;
+}
+
+#navWrapper{
+  display: block;
+  width: 45%;
+  float: right;
+  margin-top: 39px;
+}
+
+.navHead{
+  display: inline-block;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 19px;
+}
+
+.navHead p{
+  cursor: pointer;
+}
+
+#mission{
+  background-color: #E1E5EE;
+  width: auto;
+  height: 600px;
+}
+
+#mission img{
+  position: relative;
+  display: inline-block;
+  left: 8%;
+  height: 420px; 
+  width: 570px;
+}
+
+#mission p{
+  font-size: 25px;
+  position: relative;
+  display: block;
+  width: 400px;
+  margin-left: 62%;
+  top: 27%;
+}
+
+
+#sections{
+  width: auto;
+  height: 440px;
+  margin: 7% 7%;
+}
+
+#recycle, #redeem, #guide{
+  float: left;
+  width: 20%;
+  margin: 0 5%;
+  text-align: center;
+  display: block;
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.sectionImage{
+  display: block;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+#recycleSearch{
+  width: auto;
+  height: 350px;
+  background-color: #F7C59F;
+  padding-top: 2%;
+  text-align: center;
+}
+
+#recycleSearch p{
+  font-size: 20px;
+  padding-top: 3%;
+}
+
+#guideSearch{
+  background-color: #767B91;
+  width: auto;
+  height: 350px;
+  padding-top: 2%;
+  text-align: center;
+}
+
+#guideSearch p{
+  font-size: 20px;
+  padding-top: 3%;
+}
+
+#guidePopularSearch{
+  width: auto;
+  height: 400px;
+}
+
+#redeemContainerSearch{
+  background-color: #C7CCDB;
+  width: auto;
+  height: 350px;
+  padding-top: 2%;
+  text-align: center;
+}
+
+#redeemContainerSearch p{
+  font-size: 20px;
+  padding-top: 3%;
+}
+
+#popularSearch{
+  text-align: center;
+  padding-bottom: 30%;
+  padding-top: 6%;
+}
+
+.searchBarWrapper{
+  width: 440px;
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-left: 33%;
+  height: 30px;
+}
+
+.searchBarWrapper:active{
+  outline-style: solid;
+  outline-color: #767B91;
+  outline-width: 2px;
+}
+
+
+.searchBar{
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  padding-left: 30px;
+  padding-top: 7px;
+  width: 328px;
+}
+
+.searchBar:focus{
+  outline: none;
+}
+
+.button{
+  float: right;
+  border: none;
+  cursor: pointer;
+  background-color:whitesmoke;
+  display: block;
+  height: 30px;
+  width: 80px;
+  border-radius: 0 5px 5px 0;
+}
+
+.button:hover{
+  background-color: #DEDEDE;
+}
+
+#itemsCRVRefund{
+  height: 750px;
+  width: auto;
+}
+
+#itemsCRVRefund img{
+  position: relative;
+  display: inline-block;
+  height: 500px;
+  width: 450px;
+  margin-left: 50%;
+  margin-top: 6%;
+}
+
+#itemsCRVRefund p{
+  position: relative;
+  display: block;
+  width: 400px;
+  margin-left: 15%;
+  top: 30%;
+  font-size: 25px;
+}
+
+#upperFooter{
+  background-color: #767B91;
+  width: auto;
+  height: 150px;
+}
+
+#upperFooter p{
+  font-size: 20px;
+  padding-top: 2%;
+  padding-left: 15%;
+}
+
+#lowerFooter{
+  background-color: #2A324B;
+  width: auto;
+  height: 50px;
+}
+
+#lowerFooter p{
+  text-align: center;
+  font-size: 20px;
+  padding-top: 12px;
+}
+
+
+/*Donate or Recycle page*/
+#recycleContainer{
+  background-color: #F7C59F;
+  padding-bottom: 3%;
+  padding-top: 2%;
+  text-align: center;
+}
+
+#recycleContainer p{
+  font-size: 20px;
+  padding-top: 3%;
 }
