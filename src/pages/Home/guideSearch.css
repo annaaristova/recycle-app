@@ -1,0 +1,17 @@
+#guideSearch{
+    background-color: #767B91;
+    width: auto;
+    height: 350px;
+    padding-top: 2%;
+    text-align: center;
+  }
+  
+  #guideSearch p{
+    font-size: 20px;
+    padding-top: 3%;
+  }
+  
+  #guidePopularSearch{
+    width: auto;
+    height: 400px;
+  }

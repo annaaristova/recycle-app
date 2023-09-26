@@ -1,4 +1,5 @@
-import SearchBarAddress from "./searchBarAddress"
+import SearchBarAddress from "../../components/searchBarAddress";
+import "./redeemContainerSearch.css";
 
 export default function RedeemContainerSearch() {
     return (

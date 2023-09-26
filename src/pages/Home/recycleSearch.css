@@ -1,0 +1,12 @@
+#recycleSearch{
+    width: auto;
+    height: 350px;
+    background-color: #F7C59F;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#recycleSearch p{
+    font-size: 20px;
+    padding-top: 3%;
+}

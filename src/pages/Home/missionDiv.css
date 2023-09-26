@@ -1,0 +1,23 @@
+#mission{
+    background-color: #E1E5EE;
+    width: auto;
+    height: 600px;
+    padding-top: 1px;
+  }
+  
+  #mission img{
+    position: relative;
+    display: inline-block;
+    left: 8%;
+    height: 420px; 
+    width: 570px;
+  }
+  
+  #mission p{
+    font-size: 25px;
+    position: relative;
+    display: block;
+    width: 400px;
+    margin-left: 62%;
+    top: 27%;
+  }

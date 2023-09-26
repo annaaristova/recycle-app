@@ -1,0 +1,53 @@
+.searchBarWrapper{
+    width: 440px;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-left: 33%;
+    height: 30px;
+  }
+  
+  .searchBarWrapper:active{
+    outline-style: solid;
+    outline-color: #767B91;
+    outline-width: 2px;
+  }
+  
+  
+  .searchBar{
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 7px;
+    width: 328px;
+  }
+  
+  .searchBar:focus{
+    outline: none;
+  }
+  
+  .button{
+    float: right;
+    border: none;
+    cursor: pointer;
+    background-color:whitesmoke;
+    display: block;
+    height: 30px;
+    width: 80px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .button:hover{
+    background-color: #DEDEDE;
+  }
+
+.map{
+    margin-top: 10%;
+
+  }
+

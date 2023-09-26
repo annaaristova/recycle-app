@@ -1,0 +1,17 @@
+#donateOrRecycle{
+    width: auto;
+    height: auto;
+    background-color: #F7C59F;
+    padding-top: 4%;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+h2{
+    font-size: 35px;
+}
+
+#donateOrRecycle p{
+    font-size: 20px;
+    padding-top: 20px;
+}

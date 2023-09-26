@@ -7,7 +7,6 @@ import DonateOrRecycle from './pages/DonateOrRecycle';
 import RecycleGuide from './pages/RecycleGuide';
 import EligibleBeverageContainers from './pages/EligibleBeverageContainers';
 import RedeemBeverageContainersForCRVRefund from './pages/RedeemBeverageContainersForCRVRefund';
-import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
