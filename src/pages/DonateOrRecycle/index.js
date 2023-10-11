@@ -1,8 +1,7 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-//import Map from "../../components/map";
 import Location from "../../components/location";
-import SearchBarItem from "../../components/searchBarItem";
+import SearchBarItem from "../../components/searchBarItemRecyclePage";
 import "../../css-files/searchDiv.css";
 
 export default function Index() {

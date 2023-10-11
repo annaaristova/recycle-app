@@ -1,7 +1,9 @@
 import searchSign from "../images/searchSign.png"
 import "../css-files/searchBar.css";
 
+
 export default function SearchBarItem() {
+
     return(
         <div className="searchBarWrapper">
             <form>

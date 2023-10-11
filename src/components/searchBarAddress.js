@@ -2,22 +2,25 @@ import searchSign from "../images/searchSign.png"
 import "../css-files/searchBar.css";
 import {usePlacesWidget} from "react-google-autocomplete";
 import {setKey, geocode, RequestType} from "react-geocode";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "../css-files/map.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from "axios";
+
 
 export default function SearchBarAddress() {
     var address;
 
-    const {ref, autocompleteRef} = usePlacesWidget({
+    const {ref} = usePlacesWidget({
         apiKey:"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q",
         onPlaceSelected: (place) => {
             console.log(place);
             },
             options: {
-                types:['regions'],
-                types:['geocode'],
+                types:['regions'], 
+                types: ['geocode'],
                 componentRestrictions: { country: "us" },
         },
     });
@@ -27,10 +30,18 @@ export default function SearchBarAddress() {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q",
     });
-    
+
     const center = useMemo(() => ({ lat: 37.33809988023966, lng: -121.89857536983719 }), []);
+
+    const {state} = useLocation();
     const [marker, setMarker] = useState(null);
 
+    useEffect(()=>{
+        if (state){
+            setMarker({ lat: state.latitude, lng: state.longitude });
+        }
+    }, [state]);
+    
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -41,11 +52,13 @@ export default function SearchBarAddress() {
     
         geocode(RequestType.ADDRESS, address)
         .then(({ results }) => {
-            var {lat, lng} = results[0].geometry.location;
+            var { lat, lng } = results[0].geometry.location;
+            axios.post('http://localhost:3001/find_location', {addr: address, geocode: { lat, lng }}).then((response) => {
+            console.log(response);
+            });
             setMarker({ lat, lng });
         })
     }
-
 
     return(
         <>
@@ -64,7 +77,7 @@ export default function SearchBarAddress() {
                 center={center}
                 zoom={10}
                 >
-                   {marker && <Marker position={marker} />}
+                   {marker && <MarkerF position={marker} />}
                 </GoogleMap> 
             )}
             </div>
