@@ -2,6 +2,7 @@ var express = require('express'); //import the Express.js framework
 var app = express();  //create an instance of the Express application
 var sqlite3 = require('sqlite3'); //import the sqlite3 module
 var cors = require("cors");
+var axios = require('axios');
 
 app.use(express.json());
 app.use(cors());
@@ -13,86 +14,96 @@ var scheduleDB = new sqlite3.Database("./database/locations.db");
 scheduleDB.run("CREATE TABLE IF NOT EXISTS 'locations' (id INTEGER PRIMARY KEY, address TEXT, lat INTEGER, lng INTEGER)");
 
 const locations = [
-    "1080 W Beach St",
-    "1426 Freedom Blvd",
-    "1745 Walsh Ave",
-    "9835 Newell Creek Rd",
-    "4650 Meridian Ave",
-    "4148 Monterey Rd",
-    "6310 Chestnut St",
-    "935 Terra Bella Ave",
-    "150 E El Camino Real",
-    "20620 Homestead Rd",
-    "555 E Calaveras Blvd",
-    "3970 Rivermark Plz",
-    "1530 Hamilton Ave",
-    "950 W Hamilton Ave",
-    "6477 Almaden Expy",
-    "2327 Mckee Rd",
-    "1747 N 1St St",
-    "775 Lincoln Ave",
-    "10455 Miller Ave",
-    "10309 Mary Avenue",
-    "1032 N 10Th St",
-    "11665 Berryessa Rd",
-    "301 Carl Rd",
-    "1303 Story Rd",
-    "213 Dias Ln",
-    "15292 Liberty St",
-    "1565 Olivina Ave",
-    "1845 W Winton Ave",
-    "1015 N Amphlett Blvd",
-    "39200 Paseo Padre Pkwy",
-    "46 Fifth Ave",
-    "523 S Shore Center W",
-    "1312 Kirkham St",
-    "810 Laurel St",
-    "24601 Mission Blvd",
-    "2680 Old First St",
-    "1468 44Th Ave",
-    "10790 Macarthur Blvd",
-    "669 Gilman St",
-    "33377 Western Ave",
-    "735 7th Ave",
-    "2350 Noriega St.",
-    "15 Marina Blvd.",
-    "690 Stanyan St.",
-    "625 Monterey Blvd.",
-    "1200 Irving St.",
-    "850 La Playa St.",
-    "1335 Webster St.",
-    "375 32nd Ave.",
-    "2020 Market St.",
-    "730 Taraval St",
-    "1245 S Van Ness Ave",
-    "145 Jackson St",
-    "4950 Mission St",
-    "25 Point Lobos",
-    "3350 Mission St",
-    "6333 Geary Blvd.",
-    "1765 California St",
-    "99 Southgate Ave",
-    "445V Bayshore Blvd",
-    "345 Williams Ave"
+    "1080 West Beach Street, Watsonville, CA, USA",
+    "1426 Freedom Blvd, Watsonville, CA, USA",
+    "1745 Walsh Avenue, Santa Clara, CA, USA",
+    "9835 Newell Creek Rd, Ben Lomond, CA, USA",
+    "4650 Meridian Avenue, San Jose, CA, USA",
+    "4148 Monterey Rd, San Jose, CA, USA",
+    "6310 Chestnut Street, Gilroy, CA, USA",
+    "935 Terra Bella Avenue, Mountain View, CA, USA",
+    "150 East El Camino Real, Sunnyvale, CA, USA",
+    "20620 Homestead Rd, Cupertino, CA, USA",
+    "555 E Calaveras Blvd, Milpitas, CA, USA",
+    "3970 Rivermark Plaza, Santa Clara, CA, USA",
+    "1530 Hamilton Avenue, San Jose, CA, USA",
+    "950 West Hamilton Avenue, Campbell, CA, USA",
+    "6477 Almaden Expy, San Jose, CA, USA",
+    "2327 McKee Rd, San Jose, CA, USA",
+    "1747 North 1st Street, San Jose, CA, USA",
+    "775 Lincoln Avenue, San Jose, CA, USA",
+    "10455 Miller Avenue, Cupertino, CA, USA",
+    "10309 Mary Avenue, Cupertino, CA, USA",
+    "1032 North 10th Street, San Jose, CA, USA",
+    "11665 Berryessa Rd, San Jose, CA, USA",
+    "301 Carl Rd, Sunnyvale, CA, USA",
+    "1303 Story Rd, San Jose, CA, USA",
+    "213 Dias Ln, Watsonville, CA, USA",
+    "15292 Liberty Street, San Leandro, CA, USA",
+    "1565 Olivina Avenue, Livermore, CA, USA",
+    "1845 West Winton Avenue, Hayward, CA, USA",
+    "1015 N Amphlett Blvd, San Mateo, CA, USA",
+    "39200 Paseo Padre Pkwy, Fremont, CA, USA",
+    "46 Fifth Avenue, Redwood City, CA, USA",
+    "523 South Shore Center West, Alameda, CA, USA",
+    "1312 Kirkham Street, Oakland, CA, USA",
+    "810 Laurel Street, San Carlos, CA, USA",
+    "24601 Mission Blvd, Hayward, CA, USA",
+    "2680 Old First Street, Livermore, CA, USA",
+    "1468 44th Avenue, Oakland, CA, USA",
+    "10790 MacArthur Blvd, Oakland, CA, USA",
+    "669 Gilman Street, Berkeley, CA, USA",
+    "33377 Western Avenue, Union City, CA, USA",
+    "735 7th Avenue, San Francisco, CA, USA",
+    "2350 Noriega Street, San Francisco, CA, USA",
+    "15 Marina Blvd, San Francisco, CA, USA",
+    "690 Stanyan Street, San Francisco, CA, USA.",
+    "625 Monterey Blvd, San Francisco, CA, USA.",
+    "1200 Irving Street, San Francisco, CA, USA.",
+    "850 La Playa Street, San Francisco, CA, USA",
+    "1335 Webster St, San Francisco, CA, USA",
+    "375 32nd Avenue, San Francisco, CA, USA.",
+    "2020 Market Street, San Francisco, CA, USA.",
+    "730 Taraval Street, San Francisco, CA, USA",
+    "1245 South Van Ness Avenue, San Francisco, CA, USA",
+    "145 Jackson Street, San Francisco, CA, USA",
+    "4950 Mission Street, San Francisco, CA, USA",
+    "25 Point Lobos Avenue, San Francisco, CA, USA",
+    "3350 Mission Street, San Francisco, CA, USA",
+    "6333 Geary Blvd, San Francisco, CA, USA",
+    "1765 California Street, San Francisco, CA, USA",
+    "99 Southgate Avenue, Daly City, CA, USA",
+    "445v Bayshore Blvd, San Francisco, CA, USA",
+    "345 Williams Avenue, San Francisco, CA, USA"
 ]
 
 for (var i=0; i<locations.length; i++){
     var coordinates = getCoordinates(locations[i]);
+    console.log(coordinates);
 
-    var insertArray = [locations[i], coordinates[0], coordinates[1]];
+    //var insertArray = [locations[i], coordinates[0], coordinates[1]];
 
-    var insertQuery = "INSERT INTO schedule (address, lat, lng) VALUES (?), (?), (?))";
+    /*var insertQuery = "INSERT INTO schedule (address, lat, lng) VALUES (?), (?), (?))";
 
     scheduleDB.run(insertQuery, insertArray, function(err) {
         if (err) {
           return console.log(err.message);
         }
-    });
+    });*/
 }
 
 function getCoordinates(location){
-
-    return coordinates;
+    var API_KEY = "AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q";
+    axios.get("https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key="+API_KEY).then(function (response) {
+        // handle success
+        var {lat, lng} = response.data.results[0].geometry.location;
+        //console.log({lat, lng});
+        return ({lat, lng});
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
 }
 
 app.post('/find_location', function(req, res) {
