@@ -10,8 +10,9 @@ import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 
-export default function SearchBarAddress() {
+export default function SearchBarAddress({location, setLocation}) {
     var address;
+    var locationCoordinates = [];
 
     const {ref} = usePlacesWidget({
         apiKey:"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q",
@@ -34,11 +35,12 @@ export default function SearchBarAddress() {
     const center = useMemo(() => ({ lat: 37.33809988023966, lng: -121.89857536983719 }), []);
 
     const {state} = useLocation();
-    const [marker, setMarker] = useState(null);
+    const [marker, setMarker] = useState([]);
 
     useEffect(()=>{
         if (state){
-            setMarker({ lat: state.latitude, lng: state.longitude });
+            marker.push({ lat: state.latitude, lng: state.longitude });
+            //setMarker({ lat: state.latitude, lng: state.longitude });
         }
     }, [state]);
     
@@ -53,10 +55,21 @@ export default function SearchBarAddress() {
         geocode(RequestType.ADDRESS, address)
         .then(({ results }) => {
             var { lat, lng } = results[0].geometry.location;
-            axios.post('http://localhost:3001/find_location', {addr: address, geocode: { lat, lng }}).then((response) => {
-            console.log(response);
-            });
-            setMarker({ lat, lng });
+            axios.post('http://localhost:3001/find_location', {addr: address, geocode: { lat, lng }})
+            .then(function (response) {
+                for (var i=0; i<response.data.length; i++){
+                    locationCoordinates.push({"addr": response.data[i].addr, "dist": response.data[i].distance});
+                    marker.push({ lat: response.data[i].lat, lng: response.data[i].lng });
+                    //setMarker({ lat: response.data[i].lat, lng: response.data[i].lng });
+                }
+                setLocation(locationCoordinates);
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            marker.push({lat, lng });
+            //setMarker({lat, lng });
         })
     }
 
@@ -77,7 +90,12 @@ export default function SearchBarAddress() {
                 center={center}
                 zoom={10}
                 >
-                   {marker && <MarkerF position={marker} />}
+                    {marker && marker.map((location, index) => 
+                        <MarkerF 
+                            key={index}
+                            position={{ lat: location.lat, lng: location.lng }} 
+                        />
+                    )}
                 </GoogleMap> 
             )}
             </div>

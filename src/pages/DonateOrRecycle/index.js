@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import Location from "../../components/location";
+import Location from "../../components/locationForRedeemPage";
 import SearchBarItem from "../../components/searchBarItemRecyclePage";
 import "../../css-files/searchDiv.css";
 

@@ -2,7 +2,6 @@ var express = require('express'); //import the Express.js framework
 var app = express();  //create an instance of the Express application
 var sqlite3 = require('sqlite3'); //import the sqlite3 module
 var cors = require("cors");
-var axios = require('axios');
 
 app.use(express.json());
 app.use(cors());
@@ -13,6 +12,57 @@ var scheduleDB = new sqlite3.Database("./database/locations.db");
 // Check if the database exists, if not it create a new one
 scheduleDB.run("CREATE TABLE IF NOT EXISTS 'locations' (id INTEGER PRIMARY KEY, address TEXT, lat INTEGER, lng INTEGER)");
 
+app.post('/find_location', function(req, res) {
+    var lat1 = req.body.geocode.lat;
+    var lng1 = req.body.geocode.lng;
+    var closestLocations = [];
+    
+    scheduleDB.all("SELECT * FROM locations", function(err, rows) {  
+    
+        rows.forEach(function (row) {
+          if (err) {
+            return console.log(err.message);
+          } 
+
+          var lat2 = row.lat;
+          var lng2 = row.lng;
+
+          var dist = distance(lat1, lng1, lat2, lng2);
+
+          if (dist < 5){
+            closestLocations.push({"addr": row.address, "lat": lat2, "lng": lng2, "distance": dist});
+          } 
+        }); 
+         
+        res.send( closestLocations );  
+    });
+})
+
+function distance(lat1, lon1, lat2, lon2) {
+	if ((lat1 == lat2) && (lon1 == lon2)) {
+		return 0;
+	}
+	else {
+		var radlat1 = Math.PI * lat1/180;
+		var radlat2 = Math.PI * lat2/180;
+		var theta = lon1-lon2;
+		var radtheta = Math.PI * theta/180;
+		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		if (dist > 1) {
+			dist = 1;
+		}
+		dist = Math.acos(dist);
+		dist = dist * 180/Math.PI;
+		dist = dist * 60 * 1.1515;
+		dist = dist * 0.8684;
+		return dist;
+	}
+}
+
+app.listen(3001);
+
+
+/*
 const locations = [
     "1080 West Beach Street, Watsonville, CA, USA",
     "1426 Freedom Blvd, Watsonville, CA, USA",
@@ -78,82 +128,31 @@ const locations = [
 ]
 
 for (var i=0; i<locations.length; i++){
-    var coordinates = getCoordinates(locations[i]);
-    console.log(coordinates);
-
-    //var insertArray = [locations[i], coordinates[0], coordinates[1]];
-
-    /*var insertQuery = "INSERT INTO schedule (address, lat, lng) VALUES (?), (?), (?))";
-
-    scheduleDB.run(insertQuery, insertArray, function(err) {
-        if (err) {
-          return console.log(err.message);
-        }
-    });*/
+    getCoordinates(locations[i]);
 }
 
 function getCoordinates(location){
+    var insertQuery = "INSERT INTO locations (address, lat, lng) VALUES (?, ?, ?)";
     var API_KEY = "AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q";
     axios.get("https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key="+API_KEY).then(function (response) {
         // handle success
         var {lat, lng} = response.data.results[0].geometry.location;
-        //console.log({lat, lng});
-        return ({lat, lng});
+        var lat = {lat, lng}.lat;
+        var lng = {lat, lng}.lng;
+
+        var insertArray = [location, lat, lng];
+
+        scheduleDB.run(insertQuery, insertArray, function(err) {
+            if (err) {
+              return console.log(err.message);
+            }
+        });
+
+        console.log(insertArray);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       })
 }
-
-app.post('/find_location', function(req, res) {
-    var address = req.body.addr;
-    var lat1 = req.body.geocode.lat;
-    var lng1 = req.body.geocode.lng;
-    var closestLocations = [];
-    
-    scheduleDB.all("SELECT * FROM locations", function(err, rows) {  
-    
-        rows.forEach(function (row) {
-          if (err) {
-            return console.log(err.message);
-          } 
-
-          var lat2 = row.lat;
-          var lng2 = row.lng;
-
-          var dist = distance(lat1, lng1, lat2, lng2);
-
-          if (dist < 10){
-            closestLocations.push({"addr": row.address, "lat": lat2, "lng": lng2, "distance": dist});
-          } 
-        });        
-    });
-
-
-    console.log(address, lat, lng);
-    res.send("test");
-})
-
-function distance(lat1, lon1, lat2, lon2) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		dist = dist * 0.8684;
-		return dist;
-	}
-}
-
-app.listen(3001);
+*/
