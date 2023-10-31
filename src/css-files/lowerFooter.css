@@ -1,0 +1,12 @@
+#lowerFooter{
+    background-color: #2A324B;
+    width: auto;
+    height: 50px;
+  }
+  
+  #lowerFooter p{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 12px;
+  }
+  

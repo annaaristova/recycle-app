@@ -7,7 +7,7 @@ import  "../../css-files/base.css";
 import "./recycleSearch.css";
 import "./sections.css";
 import { useRef } from 'react';
-import SearchBarItem from "../../components/searchBarItem";
+import SearchItem from "../../components/searchItem";
 import recycle from "../../images/recycle.png";
 import SearchBarAddress from "./searchBarAddressForHome";
 import "./redeemContainerSearch.css";
@@ -61,13 +61,13 @@ export default function Index() {
                 <div ref={recycleOrDonate} id="recycleSearch">
                     <h2>Donate or Recycle</h2>
                     <p>Bla bla bla</p>
-                    <SearchBarItem/>
+                    <SearchItem/>
                 </div>
                 <PopularSearch/>
                 <div ref={recycleGuide} id="guideSearch">
                     <h2>Recycle Guide</h2>
                     <p>Bla bla bla</p>
-                    <SearchBarItem/>
+                    <SearchItem/>
                 </div>
                 <PopularSearch/>
                 <div ref={redeemCnt} id="redeemContainerSearch">

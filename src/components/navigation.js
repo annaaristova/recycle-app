@@ -5,13 +5,13 @@ export default function Navigation() {
         <div id="navWrapper">
             <nav>
                 <div className="navHead">
-                    <Link to="/DonateOrRecycle" className="navLink">Recycle/Donate</Link>
+                    <Link to="/Donate_Recycle" className="navLink">Recycle/Donate</Link>
                 </div>
                 <div className="navHead">
                     <Link to="/RecycleGuide" className="navLink">Recycle Guide</Link>
                 </div>
                 <div className="navHead">
-                    <Link to="/RedeemBeverageContainersForCRVRefund" className="navLink">Redeem Beverage Containers</Link>
+                    <Link to="/Redeem_Bev_Containers" className="navLink">Redeem Beverage Containers</Link>
                 </div>
             </nav>
         </div>

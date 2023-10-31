@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Home from './pages/Home';
-import DonateOrRecycle from './pages/DonateOrRecycle';
+import Donate_Recycle from './pages/Donate_Recycle'
 import RecycleGuide from './pages/RecycleGuide';
-import EligibleBeverageContainers from './pages/EligibleBeverageContainers';
-import RedeemBeverageContainersForCRVRefund from './pages/RedeemBeverageContainersForCRVRefund';
+import Redeem_Bev_Containers from './pages/Redeem_Bev_Containers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,10 +13,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="DonateOrRecycle" element={<DonateOrRecycle/>}/>
+        <Route path="Donate_Recycle" element={<Donate_Recycle/>}/>
         <Route path="RecycleGuide" element={<RecycleGuide/>}/>
-        <Route path="EligibleBeverageContainers" element={<EligibleBeverageContainers/>}/>
-        <Route path="RedeemBeverageContainersForCRVRefund" element={<RedeemBeverageContainersForCRVRefund/>}/>
+        <Route path="Redeem_Bev_Containers" element={<Redeem_Bev_Containers/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

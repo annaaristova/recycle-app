@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import SearchBarItem from "../../components/searchBarItem";
+import SearchBarItem from "../../components/searchItem";
 import "../../css-files/searchDiv.css";
 
 export default function Index() {

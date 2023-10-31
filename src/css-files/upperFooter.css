@@ -1,0 +1,11 @@
+#upperFooter{
+    background-color: #767B91;
+    width: auto;
+    height: 150px;
+  }
+  
+  #upperFooter p{
+    font-size: 20px;
+    padding-top: 2%;
+    padding-left: 15%;
+  }
