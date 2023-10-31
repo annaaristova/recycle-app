@@ -6,7 +6,7 @@ Please keep in mind that this is still a draft, and I'm actively working on this
 
 The website consists of four pages: a home page, a Recycle/Donate page, a Recycle Guide page, and the Redeem Beverage Containers page.
 
-The home page is divided into several sections where users can learn more about this project:
+On the Home page, users can learn about this project or search for locations where they can recycle, donate, or redeem items.
 
 ![image](https://github.com/annaaristova/recycle-app/assets/117958582/ccac7b1c-71e6-42df-89a6-040de9feb391)
 
