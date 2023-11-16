@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+### Introduction 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The "Recycle Bay Area" app is a waste management and recycling application that helps users locate the nearest recycling, donation, or CRV refund recycling locations.
 
-## Available Scripts
+Please keep in mind that this is still a draft, and I'm actively working on this project.
 
-In the project directory, you can run:
+The website consists of four pages: a home page, a Recycle/Donate page, a Recycle Guide page, and the Redeem Beverage Containers page.
 
-### `npm start`
+On the Home page, users can learn about this project or search for locations where they can recycle, donate, or redeem items.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/ccac7b1c-71e6-42df-89a6-040de9feb391)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+If users scroll down, they will find three options available on this website:
 
-### `npm test`
+Discover locations where they can donate or recycle items.
+Learn how to recycle items properly.
+Find locations to recycle beverage containers for a CRV refund.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/434737c2-7fe5-4903-85c5-2bb281a31fd0)
 
-### `npm run build`
+Clicking on one of these images will navigate them to the relevant section, where they can enter their address when searching for the nearest locations for CRV refunds:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/43b2aaf6-5b04-4655-be74-c88d617a8afd)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Or they can enter the name of the item they want to recycle or donate:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/21825a14-9abd-4f8c-a4e8-a49aa6e61a0b)
 
-### `npm run eject`
+Currently, I'm actively working on the Redeem_Bev_Container page. Users can enter their address, and the nearest CRV locations will be displayed on the map, along with a list of those locations, commute times, and distances:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/1ffdcf4d-c394-4132-9d00-4744cc52b893)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://github.com/annaaristova/recycle-app/assets/117958582/bc734d7c-8afd-45c9-a1be-3f36efde50c4)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
