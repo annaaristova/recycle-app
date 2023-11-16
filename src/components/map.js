@@ -1,13 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import "../css-files/map.css";
 
-export default function Map({address, locationMarker, setLocation}) {
+export default function Map({locationMarker, location}) {
 
     var markers = [];
 
     const closestLocation = {
-        url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         size: new window.google.maps.Size(38, 38), 
         scaledSize: new window.google.maps.Size(38, 38), 
     };
@@ -21,30 +20,18 @@ export default function Map({address, locationMarker, setLocation}) {
     const position = { lat: 37.33809988023966, lng: -121.89857536983719 };
     const ref = useRef();
 
-    const {state} = useLocation();
-
     useEffect(()=>{
-        if (state){
-            markers.push({ lat: state.latitude, lng: state.longitude, color: myLocation });
-            state.locationMarker.forEach(marker => {
-                markers.push({ lat: marker.lat, lng: marker.lng, color: closestLocation})
-            });
-        }
-    });
-
-    useEffect(() => {
-        if (address){
-            markers.push({ lat: address.lat, lng: address.lng, color: myLocation });
-        }
-    });
-
-    useEffect(() => {
         if (locationMarker){
-            locationMarker.forEach(marker => {
-                markers.push({ lat: marker.lat, lng: marker.lng, color: closestLocation })
+            locationMarker.forEach((marker, index) => {
+                if (index == 0){
+                    markers.push({ lat: marker.lat, lng: marker.lng, color: myLocation, title: marker.addr })
+                }
+                else {
+                    markers.push({ lat: marker.lat, lng: marker.lng, color: closestLocation, title: marker.addr })
+                }
             });
         }
-    });
+    }, [locationMarker]);
 
     useEffect(() => {
         const map = new window.google.maps.Map(ref.current, {
@@ -52,13 +39,34 @@ export default function Map({address, locationMarker, setLocation}) {
           zoom: 11,
         });
 
-        markers.map((location) => {
-            new window.google.maps.Marker({
-                position:{ lat: location.lat, lng: location.lng }, 
-                map,
-                icon: location.color
-            })
+        var infowindow =  new window.google.maps.InfoWindow({
+            map: map,
         });
+
+        markers.map((mrkr) => {
+            var marker = new window.google.maps.Marker({
+                position:{ lat: mrkr.lat, lng: mrkr.lng }, 
+                map,
+                icon: mrkr.color,
+                title: mrkr.title
+            })
+            marker.addListener("mouseover", () => {
+                infowindow.setPosition({ lat: mrkr.lat, lng: mrkr.lng });
+                infowindow.setContent(mrkr.title);
+                infowindow.open({
+                    map, 
+                    anchor: marker});
+            });
+            marker.addListener("mouseout", () => {
+                infowindow.close();
+            });
+        });
+
+        if(markers[0] != null){
+            var newCenter = new window.google.maps.LatLng(markers[0].lat, markers[0].lng);
+            map.setCenter(newCenter);
+        }
+        
     });
 
     return (
@@ -70,55 +78,3 @@ export default function Map({address, locationMarker, setLocation}) {
 
 
 
-/*
-var address;
-    var locationCoordinates = [];
-
-
-
-    const [marker, setMarker] = useState([]);
-
-    
-
-    
-        geocode(RequestType.ADDRESS, address)
-        .then(({ results }) => {
-            var { lat, lng } = results[0].geometry.location;
-            axios.post('http://localhost:3001/find_location', {addr: address, geocode: { lat, lng }})
-            .then(function (response) {
-                for (var i=0; i<response.data.length; i++){
-                    locationCoordinates.push({"addr": response.data[i].addr, "dist": response.data[i].distance});
-                    marker.push({ lat: response.data[i].lat, lng: response.data[i].lng });
-                    //setMarker({ lat: response.data[i].lat, lng: response.data[i].lng });
-                }
-                setLocation(locationCoordinates);
-                
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            marker.push({lat, lng });
-        })
-    }
-
-    return (
-        <div className="map">
-            {!isLoaded ? (
-                <h1>Loading...</h1>
-            ) : (
-                <GoogleMap
-                mapContainerClassName="map-container"
-                center={center}
-                zoom={10}
-                >
-                    {marker && marker.map((location, index) => 
-                        <MarkerF 
-                            key={index}
-                            position={{ lat: location.lat, lng: location.lng }} 
-                        />
-                    )}
-                </GoogleMap> 
-            )}
-        </div>
-    );
-    */

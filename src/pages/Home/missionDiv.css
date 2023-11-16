@@ -1,23 +1,63 @@
-#mission{
-    background-color: #E1E5EE;
-    width: auto;
-    height: 600px;
-    padding-top: 1px;
+#mission-img{
+  height: 60%;
+  width: 65%;
+  margin-left: 20px;
+  margin-top: -42px;
+  position: relative;
+  z-index: -1;
+}
+
+#mission-text{
+  text-align: right;
+  position: absolute;
+  top: 46%;
+  left: 685px;
+  font-size: 19px;
+  width: 40%;
+}
+
+.learn-more-button{
+  height: 40px;
+  width: 140px;
+  background-color: #f89d4d;
+  border-radius: 17px 17px 17px 17px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  color: aliceblue;
+  position: absolute;
+  top: 77%;
+  left: 1075px;
+  transform: translate(-16%, -50%);
+}
+
+.learn-more-button:active{
+  background-color: #f79035;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+ 
+  #mission-img{
+    margin-top: 15px;
+    margin-left: 0;
+    height: 100%;
+    width: 100%;
+
   }
+
+  #mission-text{
+    position: static;
+    width: 93%;
+    margin: 5px auto;
+    text-align: left;
+    margin-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+
   
-  #mission img{
-    position: relative;
-    display: inline-block;
-    left: 8%;
-    height: 420px; 
-    width: 570px;
+  .learn-more-button {
+    display: none;
   }
-  
-  #mission p{
-    font-size: 25px;
-    position: relative;
-    display: block;
-    width: 400px;
-    margin-left: 62%;
-    top: 27%;
-  }
+}

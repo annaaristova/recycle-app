@@ -1,53 +1,78 @@
 .searchBarWrapper{
-    width: 440px;
-    display:flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    border: none;
-    background-color: white;
-    border-radius: 5px;
-    margin-top: 5%;
-    margin-left: 33%;
-    height: 30px;
+  width: 670px;
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5%;
+  height: 35px;
+  margin-bottom: 5%;
+  border: 1px solid #f89d4d; 
+}
+
+.searchBarWrapper:active{
+  outline-style: solid;
+  outline-color: #f79035;
+  outline-width: 2px;
+}
+
+
+.searchBar{
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  padding-left: 30px;
+  padding-top: 9px;
+  width: 558px;
+}
+
+.searchBar:focus{
+  outline: none;
+}
+
+.button{
+  float: right;
+  border: none;
+  cursor: pointer;
+  background-color:#f89d4d;
+  display: block;
+  height: 35px;
+  width: 80px;
+  border-radius: 0 4px 4px 0;
+}
+
+.button:hover{
+  background-color: #f79035;
+}
+
+.searchBarWrapper:hover{
+  border: 1px solid #f79035; 
+}
+
+.error{
+color: red;
+font-size: 19px;
+margin-top: 3%;
+margin-right: 10%;
+animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+0% {opacity: 1;}
+80% {opacity: 1;}
+100% {opacity: 0;}
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+
+  .searchBarWrapper{
+    width: 450px;
   }
-  
-  .searchBarWrapper:active{
-    outline-style: solid;
-    outline-color: #767B91;
-    outline-width: 2px;
-  }
-  
-  
+
   .searchBar{
-    border: none;
-    background-color: transparent;
-    font-size: 15px;
-    padding-left: 30px;
-    padding-top: 7px;
-    width: 328px;
-  }
-  
-  .searchBar:focus{
-    outline: none;
-  }
-  
-  .button{
-    float: right;
-    border: none;
-    cursor: pointer;
-    background-color:whitesmoke;
-    display: block;
-    height: 30px;
-    width: 80px;
-    border-radius: 0 5px 5px 0;
-  }
-  
-  .button:hover{
-    background-color: #DEDEDE;
+    width: 338px;
   }
 
-.map{
-    margin-top: 10%;
-
-  }
-
+}

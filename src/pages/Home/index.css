@@ -1,0 +1,130 @@
+#recycle-block-img{
+    width: 450px;
+    height: 450px;
+    position: relative;
+    margin-left: 60%;
+    margin-top: -35%;
+    z-index: -1;
+}
+
+#container-search-img{
+    width: 450px;
+    height: 450px;
+    position: relative;
+    z-index: -1;
+    margin-top: -60%;
+    margin-left: 70px;
+}
+
+#recycle-block{
+    margin-left: 70px;
+}
+
+#container-block{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#recycle-block h2, #container-block h2{
+    color: #07beb8;
+    font-size: 35px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#container-block h2, #container-block p, .crv-search-wrapper{
+    margin-left: 46%;
+}
+
+#recycle-block p, #container-block p{
+    font-size: 19px;
+    width: 50%;
+    padding-bottom: 5%;
+}
+
+.item-search-wrapper, .crv-search-wrapper{
+    width: 470px;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 5px;
+    height: 35px;
+    margin-bottom: 5%;
+    border: 1px solid #f89d4d; 
+}
+
+  .item-search-wrapper:active, .crv-search-wrapper:active{
+    outline-style: solid;
+    outline-color: #f79035;
+    outline-width: 2px;
+  }
+  
+  .item-search, .crv-search{
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    padding-left: 30px;
+    padding-top: 9px;
+    width: 358px;
+  }
+  
+  .item-search:focus, .crv-search:focus{
+    outline: none;
+  }
+  
+  .item-search-wrapper:hover, .crv-search-wrapper:hover{
+    border: 1px solid #f79035; 
+  }
+  
+  .error{
+    color: red;
+    font-size: 19px;
+    margin-top: 3%;
+    margin-right: 10%;
+    animation: fadeOut 3s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+
+    #recycle-block h2, #container-block h2{
+        font-size: 25px;
+    }
+
+    #recycle-block-img, #container-search-img{
+        display: none;
+    }
+
+    #recycle-block, #container-block h2, #container-block p, .crv-search-wrapper{
+        margin-left: 30px;
+    }
+
+    #recycle-block p, #container-block p{
+        width: 95%;
+        padding-bottom: 5%;
+    }
+
+    .item-search-wrapper{
+        width: 430px;
+    }
+
+    .crv-search-wrapper{
+        width: 430px;
+    }
+
+    .item-search, .crv-search{
+        width: 318px;
+    }
+
+    #recycle-block, #container-block{
+        padding-bottom: 30px;
+    }
+}
+  

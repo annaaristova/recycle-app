@@ -1,81 +1,60 @@
 import Header from "../../components/header";
 import Mission from "./mission";
-import PopularSearch from "./popularSearches";
 import Footer from "../../components/footer";
-import ItemsCRVRefund from "./itemsForRefund";
 import  "../../css-files/base.css";
-import "./recycleSearch.css";
-import "./sections.css";
 import { useRef } from 'react';
-import SearchItem from "../../components/searchItem";
-import recycle from "../../images/recycle.png";
 import SearchBarAddress from "./searchBarAddressForHome";
-import "./redeemContainerSearch.css";
-import "./guideSearch.css";
-import "./recycleSearch.css"
-
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import "./index.css"
+import searchSign from "../../images/searchSign.png"
+import recycleImg from "../../images/bins1.jpg"
+import crvImg from "../../images/bins2.jpg"
 
 export default function Index() {
 
-    const recycleOrDonate = useRef(null);
-    const recycleGuide = useRef(null);
-    const redeemCnt = useRef(null);
+    const recycleDiv = useRef(null);
 
-    function scrollToRecycle(){
-        recycleOrDonate.current?.scrollIntoView({ behavior: 'smooth' });
+    const scrollToRecycle = () => {
+        recycleDiv.current?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function scrollToGuide(){
-        recycleGuide.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function scrollToRedeem(){
-        redeemCnt.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+    const render = (status) => {
+        switch (status) {
+          case Status.LOADING:
+            return <h3>{status} ..</h3>;
+          case Status.FAILURE:
+            return <h3>{status} ..</h3>;
+          case Status.SUCCESS:
+            return <SearchBarAddress/>;
+        }
+    };
 
     return (
         <div id="container">
             <Header/>
             <main>
-                <Mission/>
-                <div id="sections">
-                    <div id="recycle">
-                        <button className="sectionName" onClick={scrollToRecycle}><h2>Recycle/Donate</h2></button>
-                        <button className="sectionImageBtn" onClick={scrollToRecycle}>
-                            <img src={recycle} alt="Recycle" className="sectionImage"/>
-                        </button>
+                <div id="wrapper">
+                    <Mission scrollToRecycle={scrollToRecycle}/>
+                    <div ref={recycleDiv} id="recycle-block">
+                        <h2>Discover Nearby Donation and Recycling Centers</h2>
+                        <p>Easily locate the closest donation or recycling centers for your items. Simply enter the item's name and hit 'Search' to find convenient locations for donation or recycling near you.</p>
+                        <div className="item-search-wrapper">
+                            <form>
+                                <input className="item-search" type="text" placeholder="Search an Item"/>
+                                <button className="button" type="submit"><img src={searchSign} alt="Search Icon" height="20" width="20"/></button>
+                            </form>
+                        </div>
+                        <img src={recycleImg} alt="bins" id="recycle-block-img"/>
                     </div>
-                    <div id="guide">
-                        <button className="sectionName" onClick={scrollToGuide}><h2>Recycle Guide</h2></button>
-                        <button className="sectionImageBtn" onClick={scrollToGuide}>
-                            <img src="images/test1.jpg" alt="Recycle" className="sectionImage"/>
-                        </button>
-                    </div>
-                    <div id="redeem">
-                        <button className="sectionName" onClick={scrollToRedeem}><h2>Redeem Beverage Containers</h2></button>
-                        <button className="sectionImageBtn" onClick={scrollToRedeem}>
-                            <img src={"images/redeemContainers.png"} alt="Redeem" className="sectionImage"/>
-                        </button>
+                    <div id="container-block">
+                        <h2>Get CRV Refunds with Ease</h2>
+                        <p>Find Nearest Recycling Centers for Beverage Containers. Enter your address to discover the closest locations where you can recycle beverage containers and claim CRV refunds hassle-free.</p>
+                        <Wrapper apiKey={"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q"} libraries={["places"]} render={render}>
+                            <SearchBarAddress/>
+                        </Wrapper>
+                        <img src={crvImg} alt="bins2" id="container-search-img"/>
                     </div>
                 </div>
-                <div ref={recycleOrDonate} id="recycleSearch">
-                    <h2>Donate or Recycle</h2>
-                    <p>Bla bla bla</p>
-                    <SearchItem/>
-                </div>
-                <PopularSearch/>
-                <div ref={recycleGuide} id="guideSearch">
-                    <h2>Recycle Guide</h2>
-                    <p>Bla bla bla</p>
-                    <SearchItem/>
-                </div>
-                <PopularSearch/>
-                <div ref={redeemCnt} id="redeemContainerSearch">
-                    <h2>Redeem Beverage Containers</h2>
-                    <p>Bla bla bla</p>
-                    <SearchBarAddress/>
-                </div>
-                <ItemsCRVRefund/>
             </main>
             <Footer/>
         </div>

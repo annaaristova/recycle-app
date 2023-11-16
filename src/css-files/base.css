@@ -1,19 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Tajawal);
+
 body, nav, main, footer {
     margin: 0;
     padding: 0;
-    border: 0;
+    border: 0;   
+}
+
+body{
+    background-color: transparent;
+
 }
 
 #container{
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Tajawal', serif;
 }
 
 #header{
-    background-color: #E1E5EE;
+    background-color: transparent;
     width: auto;
     height: 120px;
 }
-
 
 h1{
     cursor: pointer;
@@ -22,45 +28,76 @@ h1{
     display: block;
     width: 40%;
     padding-left: 7%;
-    font-size: 37px;
-    top: 10px;
+    font-size: 40px;
+    top: 5%;
     text-decoration: none;
-    color: black;
+    color: #07beb8;
 }
 
 h1:active, h1:visited {
-    color: black;
+    color: #07beb8;
 }
 
 #navWrapper{
     display: block;
-    width: 47%;
+    width: 43%;
     float: right;
-    margin-top: 47px;
+    margin-top: 4%;
 }
 
 .navHead{
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 10%;
     text-align: center;
 }
 
 .navLink{
-    font-size: 20px;
+    font-size: 140%;
     text-decoration: none;
+    color: #07beb8;
+    font-weight: bold;
 }
 
 .navLink:active, .navLink:visited{
-    color: black;
+    color: #07beb8;
 }
 
 .navHead p{
     cursor: pointer;
 }
 
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    h1{
+        font-size: 35px;
+        margin-top: 6%;
+        font-size: 30px;
+    }
+
+    #navWrapper{
+        display: block;
+        width: 40%;
+        float: right;
+        margin-top: 8%;
+    }
+    
+    .navHead{
+        display: block;
+        text-align: center;
+    }
+    
+    .navLink{
+        font-size: 20px;
+    }
+
+    #header{
+        height: 150px;
+    }
+}
+
 #upperFooter{
     padding-top: 1px;
-    background-color: #767B91;
+    background-color: #06a5a0;
     width: auto;
     height: 150px;
 }
@@ -73,7 +110,7 @@ h1:active, h1:visited {
 
 #lowerFooter{
     padding-top: 1px;
-    background-color: #2A324B;
+    background-color: #058d88; 
     width: auto;
     height: 80px;
 }

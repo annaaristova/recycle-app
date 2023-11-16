@@ -1,17 +1,59 @@
 #searchDiv{
-    width: auto;
-    height: auto;
-    background-color: #F7C59F;
-    padding-top: 4%;
-    text-align: center;
-    padding-bottom: 50px;
+    background: url(/src/images/redeem-containers.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position-x: 98%;
 }
 
-#searchDivFont{
-    font-size: 35px;
+#info{
+    width: 55%;
+    font-size: 130%;
+    display: inline-block;
+    margin-left: 7%;
+    margin-right: 3%;
+    vertical-align: top;
+    padding-top: 3%;
+    height: 60%; 
 }
 
-#searchDiv p{
-    font-size: 20px;
-    padding-top: 20px;
+.list{
+    list-style-type: none;
+    padding-left: 2%;
+}
+
+.list li{
+    background: url("../images/check.png") no-repeat left center;
+    padding-left: 20px;
+    background-size: 16px 16px; 
+    line-height: 1.5;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  #info {
+      display: block;
+      width: 95%;
+      height: auto;
+      margin: 0;
+      padding-top: 10%;
+      margin-left: 3%;
+  }
+
+  #info p{
+    font-size: 90%;
+  }
+
+  .list {
+    font-size: 90%;
+  }
+
+  #searchDiv{
+    background-position: bottom;
+    background-size: 97%;
+    background-position-x: 1750%;
+    background-position-y: 80%;
+
+  }
+
 }

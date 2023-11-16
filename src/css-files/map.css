@@ -1,4 +1,9 @@
 #map{
-    width: 1000px;
-    height: 400px;
+    width: auto;
+    height: 600px;
+    margin-bottom: 6%;
+}
+
+.gm-ui-hover-effect {
+    display: none !important;
 }

@@ -1,13 +1,14 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import Location from "../../components/locations";
-import "../../css-files/searchDiv.css";
 import SearchBarAddress from "../../components/searchAddress";
 import {useState} from "react";
 import Map from "../../components/map";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import "../../css-files/searchDiv.css";
+
 
 export default function Index() {
 
@@ -21,16 +22,19 @@ export default function Index() {
         setLocationMarker(locationMarkerArray); 
     }
 
-    const [address, setAddress] = useState([]);
-    const getAddress = (addressCoordinate) => {
-        setAddress(addressCoordinate); 
+    const [isVisible, setIsVisible] = useState(false);
+    const getVisible = (Boolean) => {
+        setIsVisible(true);
     }
 
-    const {state} = useLocation();
+    var {state} = useLocation();
 
     useEffect(()=>{
         if (state){
-            setLocation(state.location)
+            setLocation(state.location);
+            setLocationMarker(state.locationMarker);
+            window.history.replaceState(null, '');
+            setIsVisible(true);
         }
     }, [state]);
 
@@ -49,15 +53,36 @@ export default function Index() {
         <div id="container">
             <Header/>
             <main>
-                <div id="searchDiv">
-                    <h2 id="searchDivFont">Redeem Beverage Containers For CRV Refund</h2>
-                    <p>Bla bla bla</p>
-                    <SearchBarAddress setAddress={getAddress} setLocation={getLocation} setLocationMarker={getLocationMarker} />
-                </div>
-                <Wrapper apiKey={"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q"} render={render}>
-                    <Map address={address} locationMarker={locationMarker} setLocation={getLocation}/>
+                <Wrapper apiKey={"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q"} libraries={["places"]} render={render}>
+                    <div id="searchDiv">
+                        <div id="info">
+                            <p>There are 1,260 recycling centers statewide that buy back empty California Refund Value (CRV) beverage containers. Most beverages sold in glass, plastic, or metal (other than milk, wine, distilled spirits and medical food containers) are subject to CRV.
+                                <br></br>
+                                <br></br>
+                                The list below includes items that are eligible for a CRV refund.
+                            </p>
+                            <ul class="list">
+                                <li>Carbonated Soft Drinks</li>
+                                <li>Beer & Malt Beverages</li>
+                                <li>Water & Mineral Water</li>
+                                <li>Sports Drinks</li>
+                                <li>Noncarbonated Fruit Drinks</li>
+                                <li>Carbonated Fruit Drinks</li>
+                                <li>Noncarbonated Soft Drinks</li>
+                                <li>Vegetable Juice (Less than 16 oz)</li>
+                                <li>Carbonated Water</li>
+                                <li>Wine & Distilled Spirit Coolers</li>
+                                <li>Coffee Beverages</li>
+                                <li>Tea Beverages</li>
+                            </ul>
+                            <p>Enter your address to find the nearest CRV locations</p>
+                            <SearchBarAddress setLocation={getLocation} setLocationMarker={getLocationMarker} setIsVisible={getVisible} />
+                        </div>
+                        
+                    </div>
+                    <Map locationMarker={locationMarker} location={location} />
                 </Wrapper>
-                <Location location={location}/>
+                {isVisible ? <Location location={location} /> : null}
             </main>
             <Footer/>
         </div>

@@ -1,5 +1,4 @@
 import searchSign from "../images/searchSign.png"
-import "../css-files/searchBar.css";
 
 
 export default function SearchItem() {
