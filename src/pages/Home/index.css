@@ -155,5 +155,21 @@
         margin-top: -60%;
         margin-left: 50px;
     }
+
+    .item-search-wrapper, .crv-search-wrapper{
+        width: 53%;
+        align-items: stretch; 
+        display: flex;
+        flex-direction: column; 
+        margin-right: 20px;
+    }
+
+    .item-search, .crv-search{
+        width: calc(100% - 35%); 
+    }
+
+    #recycle-block, #container-block{
+        padding-bottom: 30px;
+    }
 }
   
