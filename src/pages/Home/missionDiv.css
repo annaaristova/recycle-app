@@ -9,11 +9,12 @@
 
 #mission-text{
   text-align: right;
-  position: absolute;
-  top: 46%;
-  left: 685px;
+  position: relative;
+  margin-top:-25%;
+  left: 55%;
   font-size: 19px;
   width: 40%;
+  margin-bottom: 5%;
 }
 
 .learn-more-button{
@@ -25,10 +26,11 @@
   border: none;
   font-weight: bold;
   color: aliceblue;
-  position: absolute;
-  top: 77%;
-  left: 1075px;
+  position: relative;
+  left: 86%;
   transform: translate(-16%, -50%);
+  cursor: pointer;
+  margin-bottom: 10%;
 }
 
 .learn-more-button:active{
@@ -36,7 +38,7 @@
 }
 
 /* Responsive styles for smaller screens */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
  
   #mission-img{
     margin-top: 15px;
@@ -48,16 +50,36 @@
 
   #mission-text{
     position: static;
-    width: 93%;
+    width: 88%;
     margin: 5px auto;
     text-align: left;
-    margin-left: 30px;
+    margin-left: 20px;
     padding-top: 10px;
     padding-bottom: 30px;
+    font-size: 17px;
+    padding-right: 15px;
   }
 
   
   .learn-more-button {
     display: none;
   }
+}
+
+/* Responsive styles for smaller screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #mission-text{
+    font-size: 19px;
+    left: 53%;
+    width: 40%;
+    margin-top: -28%;
+    padding-bottom: 1%;
+  }
+
+  .learn-more-button{
+    font-size: 15px;
+    left: 81%;
+    margin-bottom: 9%;
+  }
+  
 }

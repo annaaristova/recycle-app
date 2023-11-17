@@ -95,6 +95,15 @@ h1:active, h1:visited {
     }
 }
 
+/* Responsive styles for smaller screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navHead{
+        display: block;
+        text-align: right;
+        margin-right: 18%;
+    }
+}
+
 #upperFooter{
     padding-top: 1px;
     background-color: #06a5a0;
