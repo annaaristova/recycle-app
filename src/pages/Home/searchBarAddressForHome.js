@@ -21,7 +21,7 @@ export default function SearchBarAddress() {
             }))
         }
     }, [ref, autoCompleteWidget]);
-    setKey("AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q");
+    setKey("");
 
     function handleSubmit(e){
         var location = [];

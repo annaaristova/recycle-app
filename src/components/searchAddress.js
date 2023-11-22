@@ -23,7 +23,7 @@ export default function SearchBarAddress({setLocation, setLocationMarker, setIsV
             }))
         }
     }, [ref, autoCompleteWidget]);
-    setKey("AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q");
+    setKey("");
 
     function handleSubmit(e){
         // Prevent the browser from reloading the page

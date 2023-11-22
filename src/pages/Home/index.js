@@ -49,7 +49,7 @@ export default function Index() {
                     <div id="container-block">
                         <h2>Get CRV Refunds with Ease</h2>
                         <p>Find Nearest Recycling Centers for Beverage Containers. Enter your address to discover the closest locations where you can recycle beverage containers and claim CRV refunds hassle-free.</p>
-                        <Wrapper apiKey={"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q"} libraries={["places"]} render={render}>
+                        <Wrapper apiKey={""} libraries={["places"]} render={render}>
                             <SearchBarAddress/>
                         </Wrapper>
                         <img src={crvImg} alt="bins2" id="container-search-img"/>

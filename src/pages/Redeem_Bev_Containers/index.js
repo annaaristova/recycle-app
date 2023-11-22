@@ -53,7 +53,7 @@ export default function Index() {
         <div id="container">
             <Header/>
             <main>
-                <Wrapper apiKey={"AIzaSyCVcqqye1VCgmrmWvcAjV9YLWRk4pb_k3Q"} libraries={["places"]} render={render}>
+                <Wrapper apiKey={""} libraries={["places"]} render={render}>
                     <div id="searchDiv">
                         <div id="info">
                             <p>There are 1,260 recycling centers statewide that buy back empty California Refund Value (CRV) beverage containers. Most beverages sold in glass, plastic, or metal (other than milk, wine, distilled spirits and medical food containers) are subject to CRV.
