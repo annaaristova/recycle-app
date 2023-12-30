@@ -6,7 +6,7 @@ I developed a waste management and recycling app to assist users in locating the
 
 Using CSS and Figma, I created a responsive interface to ensure compatibility across various devices. To store information on the closest CRV centers, donation, and recycling locations, I used an SQLite database. I utilized Node.js and Express.js to establish connectivity between ReactJS and the SQLite database.
 
-Using React.js, Node.js, and JavaScript, I implemented features that enable location-based searches for nearby recycling, donation, or CRV centers.
+Employing React.js, Node.js, JavaScript, and Google Maps API to implement features enabling location-based searches for the nearest recycling, donating, or CRV centers and displaying them on the map.
 
 ## Functionality
 
