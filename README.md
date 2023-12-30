@@ -18,7 +18,6 @@ Once users enter the name of the item they wish to donate or recycle, or their a
 
 <img width="687" alt="chrome_3qZ9Y990rM" src="https://github.com/annaaristova/recycle-app/assets/117958582/1512c35a-8025-43cc-b900-440b118623a6">
 
-
 Additionally, a location table displays the nearest locations, estimated travel time, and distance.
 
 <img width="859" alt="chrome_whSEhmzNnx" src="https://github.com/annaaristova/recycle-app/assets/117958582/ea79ec40-3e9d-46e4-a02c-2202d0fee261">
