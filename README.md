@@ -22,3 +22,8 @@ Additionally, a location table displays the nearest locations, estimated travel 
 
 <img width="859" alt="chrome_whSEhmzNnx" src="https://github.com/annaaristova/recycle-app/assets/117958582/ea79ec40-3e9d-46e4-a02c-2202d0fee261">
 
+Users can also enter the name of the item they wish to donate or recycle, or their address to find the closest CRV locations on the Recycle/Donate or Reddem Beverage Containers pages.
+
+![AFayx2qKs8](https://github.com/annaaristova/recycle-app/assets/117958582/899173ad-c81a-47d5-9ae6-6211f32b4864)
+
+
