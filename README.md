@@ -2,7 +2,7 @@
 
 I developed a waste management and recycling app to assist users in locating the nearest CRV centers, donation points, and recycling locations in the Bay Area. 
 
-![chrome_7wLaOjcuqO](https://github.com/annaaristova/recycle-app/assets/117958582/fe6a5822-e58a-4154-b000-c62ea13501f5)
+![chrome_zJe7WFu106](https://github.com/annaaristova/recycle-app/assets/117958582/7ee3aedc-3c5a-4c02-8303-1e2aa1f2a740)
 
 Using CSS and Figma, I created a responsive interface to ensure compatibility across various devices. To store information on the closest CRV centers, donation, and recycling locations, I used an SQLite database. I utilized Node.js and Express.js to establish connectivity between ReactJS and the SQLite database.
 
